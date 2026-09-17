@@ -29,7 +29,7 @@ Key detail: ticked "Add python.exe to PATH" → PATH = the list of foldersWindow
 9. Saved my work: git add . → git commit -m "Day 1: ..." → git push. 
     * Verified on GitHub: commit de088ef, "5 minutes ago". Local save → online copy.
 
-Day 2 — First real data, first real debugging — Date: 17 / 09 / 2026
+Day 2 — explore dataset of MVTec AD metal_nut, first data observations — Date: 17 / 09 / 2026
 
 1. Downloaded the MVTec AD metal_nut dataset from the official site(mvtec.com) → moved metal_nut.tar.xz into the project folder → mkdir data.
 
