@@ -1,5 +1,7 @@
 Build Journal — AOI Vision Inspection
+
 My day-by-day log, in my own words. Purpose: (1) make sure I truly understand what I did, (2) prepare my interview answers, (3) prove honest, dated work.
+
 Day 1 — Environment setup — Date: 16 / 09 / 2026 :
 
 1. Installed Python 3.11.9 — the programming language of this project.
@@ -26,3 +28,21 @@ Key detail: ticked "Add python.exe to PATH" → PATH = the list of foldersWindow
 
 9. Saved my work: git add . → git commit -m "Day 1: ..." → git push. 
     * Verified on GitHub: commit de088ef, "5 minutes ago". Local save → online copy.
+
+Day 2 — First real data, first real debugging — Date: 17 / 09 / 2026
+
+1. Downloaded the MVTec AD metal_nut dataset from the official site(mvtec.com) → moved metal_nut.tar.xz into the project folder → mkdir data.
+
+2. Unpacked and verified the structure: train / test / ground_truth.
+
+3. Wrote and ran src/explore.py: auto-discovers categories from the folders(never hardcode what you can measure), counts images, displays one sample per category.
+   * Import libraries : 3 toolboxes: Path (addresses), cv2 (images),plt (display)
+   * Build the address : data_dir = Path("data") / "metal_nut" : Smart path object pointing at the dataset
+   * Safety check: if not data_dir.exists(): raise SystemExit(...) : If the folder is missing → stop immediately with a clear message (fail fast, fail clear)
+   * Auto-discover categories : List the folders inside test/, keep only folders, take names, sort A→Z → ['bent','color','flip','good','scratch']
+   * Count per category : Dictionary: category name → number of images. Measured, not assumed.
+   * Count training images : The 220 — our detector's future food
+   * Size the grid : Ceiling division: 5 categories → 2 rows. 
+   * Display a sample of each category
+
+Summary : The script verifies the dataset exists, auto-discovers its categories from the folder structure, measures the image count per category, then deterministically displays one grayscale sample of each category in a grid — always looking at data before writing any detection logic
